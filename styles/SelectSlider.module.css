@@ -1,0 +1,41 @@
+/* components/SelectSlider.module.css */
+.select-slider {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.select-container,
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 10px;
+}
+
+.select-label,
+.slider-label {
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.select {
+    width: 200px;
+    height: 35px;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.slider {
+    width: 200px;
+    cursor: pointer;
+}
+
+.slider-value {
+    margin-left: 10px;
+    font-size: 14px;
+}
