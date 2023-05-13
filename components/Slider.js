@@ -1,7 +1,6 @@
 // components/SelectSlider.tsx
 import React, { useState } from 'react';
-import '../styles/SelectSlider.module.css';
-
+import styled from 'styled-components';
 
 export const Slider = ({
   min,

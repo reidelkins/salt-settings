@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+
 import { Select } from '../components/Select';
 import { Slider } from '../components/Slider';
-import { calculateSettings } from '../utils/calculateSettings';
+import { calculateSettings } from './api/calculateSettings';
 
 
 export default function Home() {
@@ -35,7 +36,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Salt Settings</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -88,9 +89,11 @@ export default function Home() {
             sliderValue={compensatorySalt}
           />
         </div>
-        <button className={styles.button} onClick={()=>getSaltAmount()}>
+
+        <submitButton className={styles.button} onClick={()=>getSaltAmount()}>
           Calulate Salt Settings
-        </button>
+        </submitButton>
+        
         {saltAmount > 0 && (
           <div className="salt-amount">
             <h3 className={styles.description}>
@@ -101,8 +104,6 @@ export default function Home() {
             </p>
           </div>
         )}
-
-        
       </main>
 
       <footer>
@@ -133,8 +134,21 @@ export default function Home() {
           justify-content: center;
           align-items: center;
         }
+        submitButton {
+          width: 60%;
+          height: 60px;
+          border: 3px solid #eaeaea;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 20px;
+          cursor: pointer;
+        }
+
+      
         footer img {
           margin-left: 0.5rem;
+          height: 3rem;
         }
         footer a {
           display: flex;
