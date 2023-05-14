@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css';
 
 import { Select } from '../components/Select';
 import { Slider } from '../components/Slider';
+import Form  from '../components/Form';
 import { calculateSettings } from './api/calculateSettings';
 
 
@@ -48,8 +49,8 @@ export default function Home() {
         <h2 className={styles.description}>
           Find the right salt settings for any machine
         </h2>
-
-        <div className="container">
+        <Form />
+        {/* <div className="container">
           <h3 className={styles.description}>
             Pick your machine:
           </h3>
@@ -92,7 +93,7 @@ export default function Home() {
 
         <submitButton className={styles.button} onClick={()=>getSaltAmount()}>
           Calulate Salt Settings
-        </submitButton>
+        </submitButton> */}
         
         {saltAmount > 0 && (
           <div className="salt-amount">
