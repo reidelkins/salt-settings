@@ -1,37 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-
-import { Select } from '../components/Select';
-import { Slider } from '../components/Slider';
 import Form  from '../components/Form';
-import { calculateSettings } from './api/calculateSettings';
-
 
 export default function Home() {
-
-  const machineOptions = [
-    { value: 'option1', label: 'Kinetico' },
-    { value: 'option2', label: 'Dupure' },
-    {value: 'option3', label: 'Aquasure' },
-  ];
-
-  const settingsOptions = [
-    { value: 'option1', label: 'Softener' },
-    { value: 'option2', label: 'Reverse Osmosis' },
-    {value: 'option3', label: 'Whole House' },
-  ];
-
-  const [saltAmount, setSaltAmount] = useState(0);
-  const [selectedMachine, setSelectedMachine] = useState(machineOptions[0].value);
-  const [selectedSetting, setSelectedSetting] = useState(settingsOptions[0].value);
-  const [waterHardness, setWaterHardness] = useState(0);
-  const [compensatorySalt, setCompensatorySalt] = useState(0);
-
-  const getSaltAmount = () => {
-    // console.log(selectedMachine, selectedSetting, waterHardness, compensatorySalt)
-    setSaltAmount(calculateSettings(selectedMachine, selectedSetting, waterHardness, compensatorySalt));    
-  };
 
 
   return (
@@ -50,61 +22,6 @@ export default function Home() {
           Find the right salt settings for any machine
         </h2>
         <Form />
-        {/* <div className="container">
-          <h3 className={styles.description}>
-            Pick your machine:
-          </h3>
-          <Select
-            options={machineOptions}
-            selectLabel="Select an option:"
-            handleSelectChange={setSelectedMachine}
-            selectValue={selectedMachine}
-          />
-          <h3 className={styles.description}>
-            Pick your setting:
-          </h3>
-          <Select
-            options={settingsOptions}
-            selectLabel="Select an option:"
-            handleSelectChange={setSelectedSetting}
-            selectValue={selectedSetting}
-          />
-          <h3 className={styles.description}>
-            Adjust your water hardness:
-          </h3>
-          <Slider
-            min={0}
-            max={100}
-            sliderLabel="Adjust the slider:"
-            handleSliderChange={setWaterHardness}
-            sliderValue={waterHardness}
-          />
-          <h3 className={styles.description}>
-            Add the amount of compensatory salt:
-          </h3>
-          <Slider
-            min={0}
-            max={20}
-            sliderLabel="Adjust the slider:"
-            handleSliderChange={setCompensatorySalt}
-            sliderValue={compensatorySalt}
-          />
-        </div>
-
-        <submitButton className={styles.button} onClick={()=>getSaltAmount()}>
-          Calulate Salt Settings
-        </submitButton> */}
-        
-        {saltAmount > 0 && (
-          <div className="salt-amount">
-            <h3 className={styles.description}>
-              Your salt settings are:
-            </h3>
-            <p className={styles.description}>
-              {saltAmount}
-            </p>
-          </div>
-        )}
       </main>
 
       <footer>
