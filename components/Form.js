@@ -8,43 +8,73 @@ const Form = () => {
   const hardnessOptions = Array.from(Array(41).keys()).map((num) => {
     return { value: num / 2, label: num / 2 };
   });
+
+  const diskOptions = [
+    { value: "732", label: "732" },
+    { value: "366", label: "366" },
+    { value: "244", label: "244" },
+    { value: "183", label: "183" },
+    { value: "146", label: "146" },
+    { value: "122", label: "122" },
+    { value: "105", label: "105" },
+    { value: "92", label: "92" },
+  ];
+  
   const waterSystems = [
-    { value: "", label: "Choose Your Water System", settingOptions: [] },
-    { value: "Silver", label: "Silver", settingOptions: [1, 2, 3, 4, 5, 6] },
-    { value: "Silver HE", label: "Silver HE", settingOptions: [1, 2, 3, 4, 5, 6] },
-    { value: "Platinum", label: "Platinum", settingOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] },
-    { value: "Q850-OD", label: "Q850-OD", settingOptions: hardnessOptions },
-    { value: "S650-OD", label: "S650-OD", settingOptions: hardnessOptions },
-    { value: "S150", label: "S150", settingOptions: hardnessOptions },
-    { value: "S250", label: "S250", settingOptions: hardnessOptions },
-    { value: "S250-OD", label: "S250-OD", settingOptions: hardnessOptions },
-    { value: "S350", label: "S350", settingOptions: hardnessOptions },
-    { value: "S550", label: "S550", settingOptions: hardnessOptions }, 
+    { value: "", label: "Choose Your Water System", saltTankOptions: [] },
+    { value: "Q237", label: "Q237s ( Well and City)", saltTankOptions: ["18 x 33", "18 x 35", "12 x 16 x 20", "11 x 11 x 38"], diskOptions: diskOptions, saltSettingOptions: [1.0, 1.25] },
+    { value: "2030s", label: "2030s (Well and City)", saltTankOptions: [1, 2, 3, 4, 5, 6] },
+    { value: "2040s OD", label: "*2040s OD* (Well & City)", saltTankOptions: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] },
+    { value: "2060s", label: "2060s (Best For Iron) (Well)", saltTankOptions: hardnessOptions },
+    { value: "2060s OD", label: "2060s OD (Well & City)", saltTankOptions: hardnessOptions },
+    { value: "2100s", label: "2100s (Best For Iron)(Well & City)", saltTankOptions: hardnessOptions },
+    { value: "2100s OD", label: "2100s OD", saltTankOptions: hardnessOptions },
+    { value: "2175s", label: "2175s (Best For Iron)", saltTankOptions: hardnessOptions },
+    { value: "4040s OD", label: "* 4040s OD * (City Only)", saltTankOptions: hardnessOptions },
+    { value: "4060s OD", label: "4060s OD AC (City Only)", saltTankOptions: hardnessOptions },
+    { value: "4060s OD MAC", label: "4060s OD MAC (Ceramic)(Well)", saltTankOptions: hardnessOptions },
+    
   ];
 
+  
+    
   const [waterSystemIndex, setWaterSystemIndex] = useState(0);
-  const [setting, setSetting] = useState("");
+  const [saltTank, setSaltTank] = useState("");
   const [gridPlate, setGridPlate] = useState(false);
   const [hardness, setHardness] = useState(0);
   const [iron, setIron] = useState(0);
   const [manganese, setManganese] = useState(0);
   const [reverseOsmosis, setReverseOsmosis] = useState(false);
   const [compensatedHardness, setCompensatedHardness] = useState(0);
+  const [diskOption, setDiskOption] = useState(0);
+  const [saltSetting, setSaltSetting] = useState(0);
+  const [float, setFloat] = useState(0);
+  const [adjustTube, setAdjustTube] = useState(0);
+  const [calculatedCompensatedHardness, setCalculatedCompensatedHardness] = useState(false);
 
 
   const [saltAmount, setSaltAmount] = useState(0);
   const [open, setOpen] = useState(false);
 
 
-  const handleSubmit = (e) => {
+  const handleSubmitCompensatedHardness = (e) => {
     e.preventDefault();
-    console.log(waterSystems[waterSystemIndex].value, setting, gridPlate, hardness, iron, manganese, reverseOsmosis, compensatedHardness);
-    if (waterSystems[waterSystemIndex].value !== "" && setting !== "") {
-      setOpen(true);
+    console.log(waterSystems[waterSystemIndex].value, saltTank, gridPlate, hardness, iron, manganese, reverseOsmosis, compensatedHardness);
+    if (waterSystems[waterSystemIndex].value !== "" && saltTank !== "") {
       setSaltAmount(calculateSettings());
+      setCalculatedCompensatedHardness(true);
+      // setOpen(true);
     } else {
       alert("Machine Type and Setting are required fields");
     }
+  };
+
+  const handleFinalSubmit = (e) => {
+    e.preventDefault();
+    // calculate adjust tube and float cup
+    setAdjustTube(1.5);
+    setFloat("7 1/2");
+    setOpen(true);
   };
 
   const handleGridPlateClick = () => {
@@ -63,7 +93,7 @@ const Form = () => {
 
   return (
     <>
-      <FormContainer onSubmit={handleSubmit}> 
+      <FormContainer onSubmit={handleSubmitCompensatedHardness}> 
         <Label htmlFor="name">Machine Type</Label>
         <SelectBox
           id="water-system"
@@ -82,12 +112,12 @@ const Form = () => {
             </option>
           ))}
         </SelectBox>
-        <Label htmlFor="setting">Setting</Label>
-        <SelectBox id="setting" onChange={(e) => setSetting(e.target.value)}>
-          <option value="">Select your setting</option>
-          {waterSystems[waterSystemIndex].settingOptions.map((setting) => (
-            <option key={setting} value={setting}>
-              {setting}
+        <Label htmlFor="salt-tank">Salt Tank</Label>
+        <SelectBox id="salt-tank" onChange={(e) => setSaltTank(e.target.value)}>
+          <option value="">Select your Salt Tank</option>
+          {waterSystems[waterSystemIndex].saltTankOptions.map((saltTank) => (
+            <option key={saltTank} value={saltTank}>
+              {saltTank}
             </option>
           ))}
         </SelectBox>
@@ -105,14 +135,40 @@ const Form = () => {
         <RangeInput id="manganese" onChange={(e) => setManganese(e.target.value)} min="0" max="200" type="range" value={manganese}></RangeInput>
         <Label htmlFor="reverse-osmosis">Reverse Osmosis</Label>
         <input type="checkbox" value={reverseOsmosis} onClick={()=>handleReverseOsmosisClick()}/>
-        <Label htmlFor="compensated-hardness">Compensated Hardness: {compensatedHardness}</Label>
-        <RangeInput id="compensated-hardness" onChange={(e) => setCompensatedHardness(e.target.value)} min="0" max="100" type="range" value={compensatedHardness}></RangeInput>
-        <FormSubmitButton>Get Salt Settings</FormSubmitButton>
-      </FormContainer> 
+        {/* <Label htmlFor="compensated-hardness">Compensated Hardness: {compensatedHardness}</Label>
+        <RangeInput id="compensated-hardness" onChange={(e) => setCompensatedHardness(e.target.value)} min="0" max="100" type="range" value={compensatedHardness}></RangeInput> */}
+        <FormSubmitButton>Calculate Compensated Hardness</FormSubmitButton>
+      </FormContainer>
+      {calculatedCompensatedHardness && (
+        <FormContainer onSubmit={handleFinalSubmit}> 
+          <Label htmlFor="disk-options">Disk Options</Label>
+          <SelectBox id="disk-options" onChange={(e) => setDiskOption(e.target.value)}>
+            <option value="">Choose Your Disk Option</option>
+            {waterSystems[waterSystemIndex].diskOptions.map((diskOption) => (
+              <option key={diskOption.value} value={diskOption.value}> 
+                {diskOption.label}
+              </option>
+            ))}
+          </SelectBox>
+          <Label htmlFor="salt-setting">Salt Setting</Label>
+          <SelectBox id="salt-setting" onChange={(e) => setSaltSetting(e.target.value)}>
+            <option value="">Choose Your Salt Setting</option>
+            {waterSystems[waterSystemIndex].saltSettingOptions.map((saltSetting) => (
+              <option key={saltSetting} value={saltSetting}> 
+                {saltSetting}
+              </option>
+            ))}
+          </SelectBox>
+          
+          <FormSubmitButton>Calculate Compensated Hardness</FormSubmitButton> 
+        </FormContainer>
+      )}
+      
       {open && (
         <Overlay>
           <Modal>
-            <p>Salt Amount: {saltAmount}</p>
+            <p>Float Height: {float}</p>
+            <p>Adjust Tube Height: {adjustTube}</p>
             <FormSubmitButton onClick={handleClose}>Close</FormSubmitButton>
           </Modal>
         </Overlay>
