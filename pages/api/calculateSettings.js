@@ -162,12 +162,12 @@ const gridCalculations = {
 }
 
 export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, gridPlate) => {
-    const saltTankOptions = ["18 x 33", "18 x 35", "12 x 16 x 20", "11 x 11 x 38"];
+    const saltTankOptions = ["18 x 33 or 18 x 35", "12 x 16 x 20", "11 x 11 x 38 or 12 x 40"];
     
     switch (waterSystem) {
         case "Q237":
             switch (saltTank) {
-                case saltTankOptions[0]:
+                case "18 x 33 or 18 x 35":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "1.0", float: "7 3/4"};
@@ -177,19 +177,8 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
                     if (gridPlate) {
                         return {adjustTube: "1.25", float: "7 3/4"};
                     }
-                    return {adjustTube: "K", float: "6"};
-                case saltTankOptions[1]:
-                    if (settingRow === 1) {
-                        if (gridPlate) {
-                            return {adjustTube: "1.0", float: "7 3/4"};
-                        }
-                        return {adjustTube: "J", float: "6"};
-                    }
-                    if (gridPlate) {
-                        return {adjustTube: "1.25", float: "7 3/4"};
-                    }
-                    return {adjustTube: "K", float: "6"};
-                case saltTankOptions[2]:
+                    return {adjustTube: "K", float: "6"};                
+                case "12 x 16 x 20":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "1.5", float: "7 1/4"};
@@ -200,7 +189,7 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
                         return {adjustTube: "1.5", float: "7 1/2"};
                     }
                     return {adjustTube: "L", float: "6 1/4"};
-                case saltTankOptions[3]:
+                case "11 x 11 x 38 or 12 x 40":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "1.0", float: "8 5/8"};
@@ -214,7 +203,7 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
             }
         case "2030s":
             switch (saltTank) {
-                case saltTankOptions[0]:
+                case "18 x 33 or 18 x 35":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "A", float: "7 3/4"};
@@ -224,19 +213,8 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
                     if (gridPlate) {
                         return {adjustTube: "D", float: "7 3/4"};
                     }
-                    return {adjustTube: "N", float: "6"};
-                case saltTankOptions[1]:
-                    if (settingRow === 1) {
-                        if (gridPlate) {
-                            return {adjustTube: "A", float: "7 3/4"};
-                        }
-                        return {adjustTube: "M", float: "6"};
-                    }
-                    if (gridPlate) {
-                        return {adjustTube: "D", float: "7 3/4"};
-                    }
-                    return {adjustTube: "N", float: "6"};
-                case saltTankOptions[2]:
+                    return {adjustTube: "N", float: "6"};                
+                case "12 x 16 x 20":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "B", float: "7 1/2"};
@@ -247,7 +225,7 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
                         return {adjustTube: "E", float: "7 1/2"};
                     }
                     return {adjustTube: "N", float: "7"};
-                case saltTankOptions[3]:
+                case "11 x 11 x 38 or 12 x 40":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "A", float: "8 5/8"};
@@ -261,22 +239,17 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
             }
         case "2040s OD":
             switch (saltTank) {
-                case saltTankOptions[0]:                    
+                case "18 x 33 or 18 x 35":                    
                     if (gridPlate) {
                         return {adjustTube: "1", float: "7 3/4"};
                     }
-                    return {adjustTube: "J", float: "6"};
-                case saltTankOptions[1]:
-                    if (gridPlate) {
-                        return {adjustTube: "1", float: "7 3/4"};
-                    }
-                    return {adjustTube: "J", float: "6"};
-                case saltTankOptions[2]:
+                    return {adjustTube: "J", float: "6"};                
+                case "12 x 16 x 20":
                     if (gridPlate) {
                         return {adjustTube: "1.5", float: "7 1/4"};
                     }
                     return {adjustTube: "L", float: "6"};
-                case saltTankOptions[3]:
+                case "11 x 11 x 38 or 12 x 40":
                     if (gridPlate) {
                         return {adjustTube: "1", float: "8 5/8"};
                     }
@@ -284,7 +257,7 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
             }
         case "2060s":
             switch (saltTank) {
-                case saltTankOptions[0]:
+                case "18 x 33 or 18 x 35":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "D", float: "7 3/4"};
@@ -304,29 +277,8 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
                     if (gridPlate) {
                         return {adjustTube: "J", float: "7 3/4"};
                     }
-                    return {adjustTube: "N", float: "7"};
-                case saltTankOptions[1]:
-                    if (settingRow === 1) {
-                        if (gridPlate) {
-                            return {adjustTube: "D", float: "7 3/4"};
-                        }
-                        return {adjustTube: "N", float: "6"};
-                    } else if (settingRow === 2) {
-                        if (gridPlate) {
-                            return {adjustTube: "G", float: "7 3/4"};
-                        }
-                        return {adjustTube: "L", float: "7 1/4"};
-                    } else if (settingRow === 3) {
-                        if (gridPlate) {
-                            return {adjustTube: "H", float: "7 3/4"};
-                        }
-                        return {adjustTube: "N", float: "6 3/4"};
-                    }
-                    if (gridPlate) {
-                        return {adjustTube: "J", float: "7 3/4"};
-                    }
-                    return {adjustTube: "N", float: "7"};
-                case saltTankOptions[2]:
+                    return {adjustTube: "N", float: "7"};                
+                case "12 x 16 x 20":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "E", float: "7 1/2"};
@@ -347,7 +299,7 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
                         return {adjustTube: "N/A", float: "N/A"};
                     }
                     return {adjustTube: "N/A", float: "N/A"};
-                case saltTankOptions[3]:
+                case "11 x 11 x 38 or 12 x 40":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "H", float: "8 5/8"};
@@ -371,7 +323,7 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
             }
         case "2060s OD":
             switch (saltTank) {
-                case saltTankOptions[0]:
+                case "18 x 33 or 18 x 35":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "D", float: "7 3/4"};
@@ -386,24 +338,8 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
                     if (gridPlate) {
                         return {adjustTube: "J", float: "7 3/4"};
                     }
-                    return {adjustTube: "N", float: "7"};
-                case saltTankOptions[1]:
-                    if (settingRow === 1) {
-                        if (gridPlate) {
-                            return {adjustTube: "D", float: "7 3/4"};
-                        }
-                        return {adjustTube: "N", float: "6"};
-                    } else if (settingRow === 2) {
-                        if (gridPlate) {
-                            return {adjustTube: "H", float: "7 3/4"};
-                        }
-                        return {adjustTube: "N", float: "6 3/4"};
-                    } 
-                    if (gridPlate) {
-                        return {adjustTube: "J", float: "7 3/4"};
-                    }
-                    return {adjustTube: "N", float: "7"};
-                case saltTankOptions[2]:
+                    return {adjustTube: "N", float: "7"};                
+                case "12 x 16 x 20":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "E", float: "7 1/2"};
@@ -419,7 +355,7 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
                         return {adjustTube: "N/A", float: "N/A"};
                     }
                     return {adjustTube: "N/A", float: "N/A"};
-                case saltTankOptions[3]:
+                case "11 x 11 x 38 or 12 x 40":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "H", float: "8 5/8"};
@@ -438,7 +374,7 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
             }
         case "2100s":
             switch (saltTank) {
-                case saltTankOptions[0]:
+                case "18 x 33 or 18 x 35":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "L", float: "7 3/4"};
@@ -458,36 +394,15 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
                     if (gridPlate) {
                         return {adjustTube: "N", float: "13 3/8"};
                     }
-                    return {adjustTube: "N", float: "14 3/4"};
-                case saltTankOptions[1]:
-                    if (settingRow === 1) {
-                        if (gridPlate) {
-                            return {adjustTube: "L", float: "7 3/4"};
-                        }
-                        return {adjustTube: "N", float: "7 3/4"};
-                    } else if (settingRow === 2) {
-                        if (gridPlate) {
-                            return {adjustTube: "N", float: "7 3/4"};
-                        }
-                        return {adjustTube: "N", float: "9"};
-                    } else if (settingRow === 3) {
-                        if (gridPlate) {
-                            return {adjustTube: "N", float: "9 1/2"};
-                        }
-                        return {adjustTube: "N", float: "10 3/4"};
-                    }
-                    if (gridPlate) {
-                        return {adjustTube: "N", float: "13 3/8"};
-                    }
-                    return {adjustTube: "N", float: "14 3/4"};
-                case saltTankOptions[2]:
+                    return {adjustTube: "N", float: "14 3/4"};                
+                case "12 x 16 x 20":
                     return {adjustTube: "N/A", float: "N/A"};
-                case saltTankOptions[3]:
+                case "11 x 11 x 38 or 12 x 40":
                     return {adjustTube: "N/A", float: "N/A"};
             }
         case "2100s OD":
             switch (saltTank) {
-                case saltTankOptions[0]:
+                case "18 x 33 or 18 x 35":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "L", float: "7 3/4"};
@@ -502,46 +417,25 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
                     if (gridPlate) {
                         return {adjustTube: "N", float: "13 3/8"};
                     }
-                    return {adjustTube: "N", float: "14 3/4"};
-                case saltTankOptions[1]:
-                    if (settingRow === 1) {
-                        if (gridPlate) {
-                            return {adjustTube: "L", float: "7 3/4"};
-                        }
-                        return {adjustTube: "N", float: "7 3/4"};
-                    } else if (settingRow === 2) {
-                        if (gridPlate) {
-                            return {adjustTube: "N", float: "9 1/2"};
-                        }
-                        return {adjustTube: "N", float: "10 3/4"};
-                    } 
-                    if (gridPlate) {
-                        return {adjustTube: "N", float: "13 3/8"};
-                    }
-                    return {adjustTube: "N", float: "14 3/4"};
-                case saltTankOptions[2]:
+                    return {adjustTube: "N", float: "14 3/4"};                
+                case "12 x 16 x 20":
                     return {adjustTube: "N/A", float: "N/A"};
-                case saltTankOptions[3]:
+                case "11 x 11 x 38 or 12 x 40":
                     return {adjustTube: "N/A", float: "N/A"};                    
             }
         case "2175s":
             switch (saltTank) {
-                case saltTankOptions[0]:
+                case "18 x 33 or 18 x 35":
                     if (gridPlate) {
                         return {adjustTube:"N", float: "13 3/8"};
                     }
-                    return {adjustTube: "N", float: "14 3/4"};
-                case saltTankOptions[1]:
-                    if (gridPlate) {
-                        return {adjustTube:"N", float: "13 3/8"};
-                    }
-                    return {adjustTube: "N", float: "14 3/4"};
-                case saltTankOptions[2]:
+                    return {adjustTube: "N", float: "14 3/4"};                
+                case "12 x 16 x 20":
                     if (gridPlate) {
                         return {adjustTube: "N/A", float: "N/A"};
                     }
                     return {adjustTube: "N/A", float: "N/A"};
-                case saltTankOptions[3]:
+                case "11 x 11 x 38 or 12 x 40":
                     if (gridPlate) {
                         return {adjustTube: "N/A", float: "N/A"};
                     }
@@ -549,22 +443,17 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
             }
         case "4040s OD":
             switch (saltTank) {
-                case saltTankOptions[0]:
+                case "18 x 33 or 18 x 35":
                     if (gridPlate) {
                         return {adjustTube: "1.0", float: "7 3/4"};
                     }
-                    return {adjustTube: "J", float: "6"};
-                case saltTankOptions[1]:
-                    if (gridPlate) {
-                        return {adjustTube: "1.0", float: "7 3/4"};
-                    }
-                    return {adjustTube: "J", float: "6"};
-                case saltTankOptions[2]:
+                    return {adjustTube: "J", float: "6"};                
+                case "12 x 16 x 20":
                     if (gridPlate) {
                         return {adjustTube: "1.5", float: "7 1/4"};
                     }
                     return {adjustTube: "L", float: "6"};
-                case saltTankOptions[3]:
+                case "11 x 11 x 38 or 12 x 40":
                     if (gridPlate) {
                         return {adjustTube: "1.0", float: "8 5/8"};
                     }
@@ -572,7 +461,7 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
             }
         case "4060s OD":
             switch (saltTank) {
-                case saltTankOptions[0]:
+                case "18 x 33 or 18 x 35":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "F", float: "7 1/2"};
@@ -587,27 +476,11 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
                     if (gridPlate) {
                         return {adjustTube: "H", float: "7 3/4"};
                     }
-                    return {adjustTube: "N", float: "6 3/4"};
-                case saltTankOptions[1]:
-                    if (settingRow === 1) {
-                        if (gridPlate) {
-                            return {adjustTube: "F", float: "7 1/2"};
-                        }
-                        return {adjustTube: "N", float: "6 1/2"};
-                    } else if (settingRow === 2) {
-                        if (gridPlate) {
-                            return {adjustTube: "G", float: "7 3/4"};
-                        }
-                        return {adjustTube: "L", float: "7 1/4"};
-                    } 
-                    if (gridPlate) {
-                        return {adjustTube: "H", float: "7 3/4"};
-                    }
-                    return {adjustTube: "N", float: "6 3/4"};
-                case saltTankOptions[2]:
+                    return {adjustTube: "N", float: "6 3/4"};                
+                case "12 x 16 x 20":
                     return {adjustTube: "N/A", float: "N/A"};
                     
-                case saltTankOptions[3]:
+                case "11 x 11 x 38 or 12 x 40":
                     if (settingRow === 1) {
                         if (gridPlate) {
                             return {adjustTube: "L", float: "8 5/8"};
@@ -626,22 +499,17 @@ export const calculateAdjustTubeAndFloat = (settingRow, saltTank, waterSystem, g
             }
         case "4060s OD MAC":
             switch (saltTank) {
-                case saltTankOptions[0]:
+                case "18 x 33 or 18 x 35":
                     if (gridPlate) {
                         return {adjustTube: "J", float: "7 3/4"};
                     }
-                    return {adjustTube: "N", float: "7"};
-                case saltTankOptions[1]:
-                    if (gridPlate) {
-                        return {adjustTube: "J", float: "7 3/4"};
-                    }
-                    return {adjustTube: "N", float: "7"};
-                case saltTankOptions[2]:
+                    return {adjustTube: "N", float: "7"};                
+                case "12 x 16 x 20":
                     if (gridPlate) {
                         return {adjustTube: "N/A", float: "N/A"};
                     }
                     return {adjustTube: "N/A", float: "N/A"};
-                case saltTankOptions[3]:
+                case "11 x 11 x 38 or 12 x 40":
                     if (gridPlate) {
                         return {adjustTube: "N/A", float: "N/A"};
                     }

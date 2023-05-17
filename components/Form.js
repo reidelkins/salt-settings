@@ -5,7 +5,7 @@ import { calculateSettings, calculateAdjustTubeAndFloat } from '../pages/api/cal
 
 const Form = () => {
   
-  const saltTankOptions = ["18 x 33", "18 x 35", "12 x 16 x 20", "11 x 11 x 38"];
+  const saltTankOptions = ["18 x 33 or 18 x 35", "12 x 16 x 20", "11 x 11 x 38 or 12 x 40"];
   
   const waterSystems = [
     { value: "", label: "Choose Your Water System" },
